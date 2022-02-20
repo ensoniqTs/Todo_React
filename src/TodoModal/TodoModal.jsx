@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 import s from './TodoModal.module.css'
 import uuid from 'react-uuid'
+import { Button } from "@mui/material"
 
 
 const TodoItem = () => {
@@ -13,10 +14,12 @@ const TodoModal = () => {
 
 
     let [todo, setTodo] = useState({
-        todos: [{ todo: '' }],
+        todos: [],
         newTodo: ''
 
     })
+
+  
     let todoElement = React.createRef()
     let addTodo = () => {
 
@@ -29,12 +32,15 @@ const TodoModal = () => {
 
         todo.todos.push(newChangeTodo)
         todoElement.current.value = ''
-        console.log(todo)
+        
+        
     }
     let todoChange = () => {
         let text = todoElement.current.value
         todo.newTodo = text
     }
+  
+    let element = todo.todos.map(e => e.todo )
 
     return (
         <div className={s.body}>
@@ -42,16 +48,20 @@ const TodoModal = () => {
                 <h2>Todo test</h2>
                 <div>
                     <input type="text" placeholder="Введите заголовок" />
-                    <button >Save</button>
+                    <Button variant='contained'>Save</Button>
                 </div>
 
                 <div>
                     <input placeholder="введите дело" ref={todoElement} onChange={todoChange} />
-                    <button onClick={addTodo}>Save</button>
+                    
+                    <Button variant='contained' onClick={addTodo}>Save</Button>
                 </div>
-
+                {element}
                 <NavLink to='/close'>Close</NavLink>
 
+            </div>
+            <div>
+                ppp;l
             </div>
 
         </div>
