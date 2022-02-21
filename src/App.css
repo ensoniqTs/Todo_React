@@ -1,11 +1,17 @@
 .todoStart{
     display: flex;
-    align-items: center;
+    align-items:stretch;
     justify-content: center;
-    background:  linear-gradient(#b6b1b1e8, #4e5ae0f6);
+    background:  linear-gradient(#b6b1b1e8, #4e5ae0f6) ;
     height: 100vh;
     width: 100vw;
 }
 .btn{
     margin-left: 10px;
+}
+
+.todo_end{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
 }

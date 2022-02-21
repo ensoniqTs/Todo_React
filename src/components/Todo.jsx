@@ -4,17 +4,23 @@ import { NavLink } from 'react-router-dom'
 
 
 const Todo = (props) => {
+    const todoComplite = () => {
 
+        props.todo.complite = true
+
+
+
+        console.log(props.todo)
+    }
     return (
-        <div>
-            <h1>Todo List!!</h1>
-            {/* <NavLink to='/modal'>Add</NavLink> */}
-
-
-
-
-
-
+        <div key={props.key} className='todo_end'>
+            <div>
+                <input type="checkbox" onClick={todoComplite} />
+                {props.todo.todoItem}
+            </div>
+            <button variant="contained" color="success" onClick={() => props.removeTodo(props.todo.id)}>
+                Delete
+            </button>
         </div>
     )
 }

@@ -25,6 +25,7 @@
     transform: rotateX(180deg);
     padding: 20px;
     transition: 0.9s;
+    z-index: 0;
 }
 .content.active{
     transform: rotateX(360deg);

@@ -7,47 +7,40 @@ import TodoItem from "../Todo/TodoItem"
 
 
 const Modal = (props) => {
-    let [todo, setTodo] = useState({
-        todos: [],
-        newTodo: ''
 
-    })
-    let todoElement = React.createRef()
-    let element = todo.todos.map(e => <TodoItem item={e.todo} />)
-    let addTodo = () => {
+    const [todoInput, setTodoInput] = useState('')
 
-        let newChangeTodo = {
-            title: 'Title',
-            todo: todo.newTodo,
-            checked: false,
-            id: uuid()
-        }
+    const handSubmit = (e) => {
+        e.preventDefault()
+        props.addTodo(todoInput)
+        setTodoInput('')
+    }
 
-        todo.todos.push(newChangeTodo)
-        todoElement.current.value = ''
-
-
+    const onChange = (e) => {
+        setTodoInput(e.currentTarget.value)
 
 
     }
-    let todoChange = () => {
-        let text = todoElement.current.value
-        todo.newTodo = text
-    }
+    const handleKeyPres = () => {
 
+    }
 
     return (
         <div className={props.active ? "modal active" : "modal"} onClick={() => props.setActive(false)}>
             <div className={props.active ? 'content active' : 'content'} onClick={e => e.stopPropagation()}>
                 <div>
-                    <div className="todo_input">
-                        <input ref={todoElement} onChange={todoChange} />
-                        <Button variant="contained" color="success" onClick={addTodo}>Add</Button>
-                    </div>
-                    <div className="formItems">
-                        {element}
-
-
+                    <form onSubmit={handSubmit} className="todo_input">
+                        <input
+                            value={todoInput}
+                            type='text'
+                            onChange={onChange}
+                            onKeyDown={handleKeyPres}
+                            placeholder='input todo'
+                        />
+                        <button variant="contained" color="success">Add</button>
+                    </form>
+                    <div >
+                        {props.Todos}
                     </div>
                 </div>
 
