@@ -1,10 +1,15 @@
+
 .todoStart{
     display: flex;
-    align-items:stretch;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
     background:  linear-gradient(#b6b1b1e8, #4e5ae0f6) ;
     height: 100vh;
     width: 100vw;
+}
+header{
+    font-size: 2em;
 }
 .btn{
     margin-left: 10px;
@@ -13,5 +18,26 @@
 .todo_end{
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
+    margin: 5px;
+}
+.todo_end div{
+    margin: 5px;
+}
+.todo_render{
+    background: linear-gradient(rgba(226, 81, 81, 0.651), rgba(16, 16, 139, 0.514));
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 3px 5px rgb(63, 62, 62);
+}
+button{
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 2px 3px 5px rgb(63, 62, 62);
+}
+
+button:hover{
+    background-color: rgb(143, 130, 114);
+}
+button:active{
+    box-shadow: none;
 }

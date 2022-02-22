@@ -14,8 +14,9 @@ const Todo = (props) => {
     }
     return (
         <div key={props.key} className='todo_end'>
-            <div>
+            <div >
                 <input type="checkbox" onClick={todoComplite} />
+
                 {props.todo.todoItem}
             </div>
             <button variant="contained" color="success" onClick={() => props.removeTodo(props.todo.id)}>

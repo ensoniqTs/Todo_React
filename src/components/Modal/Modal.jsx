@@ -1,14 +1,24 @@
 import { Button } from "@mui/material"
 import s from './Modal.css'
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import uuid from 'react-uuid'
-import TodoItem from "../Todo/TodoItem"
+import { createRef } from "react"
+
 
 
 
 const Modal = (props) => {
 
-    const [todoInput, setTodoInput] = useState('')
+    const [todoInput, setTodoInput] = useState(
+        JSON.parse(localStorage.getItem('todoInput')) || ''
+    )
+    const [todoTitle, setTodoTitle] = useState(
+        JSON.parse(localStorage.getItem('todoTitle')) || ''
+    )
+    useEffect(() => {
+        localStorage.setItem('todoInput', JSON.stringify(todoInput))
+        localStorage.setItem('todoTitle', JSON.stringify(todoTitle))
+    }, [todoInput], [todoTitle])
 
     const handSubmit = (e) => {
         e.preventDefault()
@@ -21,20 +31,27 @@ const Modal = (props) => {
 
 
     }
-    const handleKeyPres = () => {
-
+    const titleAdd = (e) => {
+        setTodoTitle(e.currentTarget.value)
     }
 
     return (
         <div className={props.active ? "modal active" : "modal"} onClick={() => props.setActive(false)}>
+
             <div className={props.active ? 'content active' : 'content'} onClick={e => e.stopPropagation()}>
+                <div className="close" onClick={() => props.setActive(false)}>&#10008;</div>
                 <div>
                     <form onSubmit={handSubmit} className="todo_input">
-                        <input
+                        <input type='text'
+                            value={todoTitle}
+                            onChange={titleAdd}
+                        />
+                        <button variant="contained" color="success" onClick={titleAdd}>Add</button>
+                        <input maxLength='2000'
+
                             value={todoInput}
                             type='text'
                             onChange={onChange}
-                            onKeyDown={handleKeyPres}
                             placeholder='input todo'
                         />
                         <button variant="contained" color="success">Add</button>
@@ -42,6 +59,7 @@ const Modal = (props) => {
                     <div >
                         {props.Todos}
                     </div>
+
                 </div>
 
             </div>

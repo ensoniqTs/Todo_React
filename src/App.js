@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Todo from './components/Todo';
-import TodoModal from './TodoModal/TodoModal';
+
 import './App.css';
 import Modal from './components/Modal/Modal';
 import { Button } from '@mui/material';
-import TodoItem from './components/Todo/TodoItem';
+
 import uuid from 'react-uuid'
 
 function App() {
   const [active, setActive] = useState(false)
-  const [todos, setTodos] = useState([])
+
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem('todos')) || []
+  )
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const addTodo = (todoInput) => {
     if (todoInput) {
       const newItem = {
         id: uuid(),
         todoItem: todoInput,
+        date: new Date,
         complite: false
       }
       console.log(newItem)
@@ -30,8 +37,8 @@ function App() {
 
   }
 
-  const handleTogle = () => {
-
+  const handleTogle = (id) => {
+    setTodos([...todos])
   }
 
   const Todos = todos.map((todo) => {
@@ -48,7 +55,10 @@ function App() {
 
   return (
     <div className='todoStart'>
-      Todo
+      <header>
+        Todo List
+      </header>
+
       <div className='btn'>
         <Button variant="contained" color="success" onClick={() => setActive(true)} >Add</Button>
         <Modal active={active}

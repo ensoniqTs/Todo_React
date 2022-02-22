@@ -34,3 +34,10 @@
     display: flex;
     justify-content: space-around;
 }
+.close{
+    text-align: right;
+    cursor: pointer;
+}
+.close:hover{
+    color: brown;
+}
