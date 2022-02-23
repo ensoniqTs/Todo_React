@@ -17,22 +17,26 @@ const Modal = (props) => {
     )
     useEffect(() => {
         localStorage.setItem('todoInput', JSON.stringify(todoInput))
+
+    }, [todoInput])
+    useEffect(() => {
         localStorage.setItem('todoTitle', JSON.stringify(todoTitle))
-    }, [todoInput], [todoTitle])
+    }, [todoTitle])
 
     const handSubmit = (e) => {
         e.preventDefault()
         props.addTodo(todoInput)
         setTodoInput('')
+        props.addTitle(todoTitle)
+        setTodoTitle('')
     }
 
     const onChange = (e) => {
         setTodoInput(e.currentTarget.value)
-
-
     }
     const titleAdd = (e) => {
         setTodoTitle(e.currentTarget.value)
+        console.log(todoTitle)
     }
 
     return (
@@ -40,21 +44,28 @@ const Modal = (props) => {
 
             <div className={props.active ? 'content active' : 'content'} onClick={e => e.stopPropagation()}>
                 <div className="close" onClick={() => props.setActive(false)}>&#10008;</div>
-                <div>
+                <div className="input_data">
                     <form onSubmit={handSubmit} className="todo_input">
-                        <input type='text'
-                            value={todoTitle}
-                            onChange={titleAdd}
-                        />
-                        <button variant="contained" color="success" onClick={titleAdd}>Add</button>
-                        <input maxLength='2000'
+                        <div>
+                            <input type='text'
+                                value={todoTitle}
+                                onChange={titleAdd}
+                                placeholder='input title'
+                            />
+                            <button variant="contained" color="success" >Save</button>
+                        </div>
+                        <div>
+                            <input maxLength='2000'
 
-                            value={todoInput}
-                            type='text'
-                            onChange={onChange}
-                            placeholder='input todo'
-                        />
-                        <button variant="contained" color="success">Add</button>
+                                value={todoInput}
+                                type='text'
+                                onChange={onChange}
+                                placeholder='input todo'
+                            />
+                            <button variant="contained" color="success">Add</button>
+                        </div>
+
+
                     </form>
                     <div >
                         {props.Todos}

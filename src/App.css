@@ -4,12 +4,26 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    background:  linear-gradient(#b6b1b1e8, #4e5ae0f6) ;
+    background:  linear-gradient(#9c9c9ce8, #1a1a1af6) ;
     height: 100vh;
     width: 100vw;
 }
 header{
     font-size: 2em;
+}
+.title{
+    color:rgb(0, 0, 0);
+    text-align: center;
+    text-transform: uppercase;
+}
+.title span{
+    margin-left: 15px;
+    cursor: pointer;
+    opacity: 0;
+}
+.title span:hover{
+    color: rgb(173, 39, 39);
+    opacity: 1;
 }
 .btn{
     margin-left: 10px;
@@ -24,13 +38,15 @@ header{
     margin: 5px;
 }
 .todo_render{
-    background: linear-gradient(rgba(226, 81, 81, 0.651), rgba(16, 16, 139, 0.514));
+    min-width: 50vw;
+    background: linear-gradient(rgb(95, 95, 95), rgb(157, 157, 167));
     margin-top: 10px;
     border-radius: 5px;
-    box-shadow: 2px 3px 5px rgb(63, 62, 62);
+    box-shadow: 2px 3px 5px rgb(34, 34, 34);
 }
 button{
-    border: 1px solid black;
+    background: linear-gradient(rgba(150, 150, 150, 0.459), rgba(199, 199, 199, 0.527));
+    border: none;
     border-radius: 5px;
     box-shadow: 2px 3px 5px rgb(63, 62, 62);
 }

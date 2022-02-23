@@ -7,11 +7,9 @@ const Todo = (props) => {
     const todoComplite = () => {
 
         props.todo.complite = true
-
-
-
         console.log(props.todo)
     }
+
     return (
         <div key={props.key} className='todo_end'>
             <div >
