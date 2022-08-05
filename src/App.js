@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Todo from './components/Todo';
-
 import './App.css';
 import Modal from './components/Modal/Modal';
 import { Button } from '@mui/material';
-
 import uuid from 'react-uuid'
 import TodoTitle from './components/Todo_Title';
 
@@ -48,17 +45,12 @@ function App() {
     }
   }
   const removeTodo = (id) => {
-
     setTodos([...todos.filter((todo) => todo.id !== id)])
-
   }
 
   const removeTitle = (id) => {
-
     setTitle([])
     console.log(title)
-
-
   }
   const handleTogle = (id) => {
     setTodos([...todos])
@@ -77,6 +69,7 @@ function App() {
       />
     )
   })
+
 
   return (
     <div className='todoStart'>
@@ -100,7 +93,6 @@ function App() {
           title={title}
           titleTodo={titleTodo}
           removeTitle={removeTitle}
-
         />
         {Todos}
 
